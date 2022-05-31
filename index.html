@@ -36,17 +36,17 @@
 let form= document.querySlecetor("form");
 Form.addEventListener('submit',(e)=>{
 e.preventDefault();
-document.querySlecetor("#sub"). value "submit";
+document.querySlecetor("#sub").value "submit";
 let data= newFormData (form):
-fetch('https://script.google.com/macros/s/AKfycbwZazMK02xkYk2EU1UL-5E1_vk1jTm37WBkepDwrbKTOVG7LtmJE-NKH4MVCmkq79FqjQ/exec ' ,
+fetch('https://script.google.com/macros/s/AKfycbwZazMK02xkYk2EU1UL-5E1_vk1jTm37WBkepDwrbKTOVG7LtmJE-NKH4MVCmkq79FqjQ/exec',
 method: "POST",
 body: data })
 .then(res => res.text())
 .then{data =>{
 document.querySlecetor("#msg").innerHTML = data;
-document.querySlecetor("#sub"). value ="submit";
-;({
-({
+document.querySlecetor("#sub").value="submit";
+});
+})
 
 </script>
   </body>
