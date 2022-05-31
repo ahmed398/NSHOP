@@ -40,7 +40,7 @@ e.preventDefault();
 document.querySelector("#sub").value="submitting...";
 let data= new FormData(form):
 fetch('https://script.google.com/macros/s/AKfycbwZazMK02xkYk2EU1UL-5E1_vk1jTm37WBkepDwrbKTOVG7LtmJE-NKH4MVCmkq79FqjQ/exec',{
-method: "POST",
+method: "post",
 body: data
 })
 .then(res => res.text())
