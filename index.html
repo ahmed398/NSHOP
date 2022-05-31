@@ -38,9 +38,10 @@ let form= document.querySelector("form");
 form.addEventListener('submit',(e)=>{
 e.preventDefault();
 let data= new FormData (form):
-fetch('https://script.google.com/macros/s/AKfycbwZazMK02xkYk2EU1UL-5E1_vk1jTm37WBkepDwrbKTOVG7LtmJE-NKH4MVCmkq79FqjQ/exec',
+fetch('https://script.google.com/macros/s/AKfycbwZazMK02xkYk2EU1UL-5E1_vk1jTm37WBkepDwrbKTOVG7LtmJE-NKH4MVCmkq79FqjQ/exec',{
 method: "POST",
-body: data
+body: data;
+})
 .then(res => res.text())
 .then{data =>{
 document.querySelector("#msg").innerHTML = data;
