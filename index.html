@@ -1,39 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<html lang="ar" dir="rtl">
-
-  <head>
-
-    <meta charset="utf-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Bootstrap demo</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
-  </head>
-
-  <body>
-<h1 id="msg"></h1>
-
-
-<form action="https://script.google.com/macros/s/AKfycbwZazMK02xkYk2EU1UL-5E1_vk1jTm37WBkepDwrbKTOVG7LtmJE-NKH4MVCmkq79FqjQ/exec" method="post">
-
-  <div class="mb-3">
-   
-    <input type="text" name="name">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>HTML Form to Google Sheets - Pure Coding</title>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-5 col-md-8 mx-auto shadow border bg-white p-4 rounded">
+                <h2 class="text-center fw-bold mb-3">Contact Us</h2>
+                <form name="google-sheet">
+                    <div id="form_alerts"></div>
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email address" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="Number" id="phone" name="phone" class="form-control" placeholder="Enter your phone" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="Number" id="age" name="age" class="form-control" placeholder="Enter your Age" required>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary me-2" type="submit">Send message!</button>
+                        <button class="btn btn-danger" type="reset">Reset the form!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  <div class="mb-3">
-  
-    <input type="text" name="age">
-  </div>
 
-  <input type="submit">
-</form>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-
-  </body>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwZazMK02xkYk2EU1UL-5E1_vk1jTm37WBkepDwrbKTOVG7LtmJE-NKH4MVCmkq79FqjQ/exec'
+        const form = document.forms['google-sheet']
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => $("#form_alerts").html("<div class='alert alert-success'>Contact message sent successfully.</div>"))
+            .catch(error => $("#form_alerts").html("<div class='alert alert-danger'>Contact message not sent.</div>"))
+        })
+    </script>
+</body>
 </html>
